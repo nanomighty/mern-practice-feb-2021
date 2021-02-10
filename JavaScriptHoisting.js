@@ -103,18 +103,18 @@ function rewind() {
 console.log(genre);
 
 //After Hoisting by the Interpreter
-function rewind() {
-    var genre;
-    genre = "rock";
-    console.log(genre);
-    genre = "r&b";
-    console.log(genre);
-}
-var genre;
-console.log(genre);  //logs undefined
-genre = 'disco';
-rewind();            //logs "rock", "r&b"
-console.log(genre);  //logs "disco"
+// function rewind() {
+//     var genre;
+//     genre = "rock";
+//     console.log(genre);
+//     genre = "r&b";
+//     console.log(genre);
+// }
+// var genre;
+// console.log(genre);  //logs undefined
+// genre = 'disco';
+// rewind();            //logs "rock", "r&b"
+// console.log(genre);  //logs "disco"
 
 //7: GIVEN
 dojo = "san jose";
@@ -175,20 +175,178 @@ function makeDojo(name, students) {
 // console.log(makeDojo("Chicago", 65)); //logs {name:"Chicago",students:65, hiring: true}
 // console.log(makeDojo("Berkeley", 0)); //error - can't make assignment to constant variable
 
-//Extra Problem : GIVEN - 1
-console.log(example);
-var example = "I'm the example!";   
+//------------------------------------------Hoisting with ES6 syntax----------------------------------------
+
+
+
+
+
+//1: GIVEN
+console.log(hello);
+let hello = 'world';
 
 //After Hoisting by the Interpreter
-// var example;
-// console.log(example);             //logs undefined
-// example = "I'm the example!"; 
+//logs reference error - hello is not defined
 
-//Extra Problem: GIVEN - 2
-console.log(example);
-let example = "I'm the example!";    
+
+//2: GIVEN
+let needle = 'haystack';
+test();
+function test() {
+    let needle = 'magnet';
+    console.log(needle);
+}
 
 //After Hoisting by the Interpreter
-// console.log(example);
-// let example = "I'm the example!";   //ReferenceError: example is not defined
+// function test() {
+//     let needle = 'magnet';
+//     console.log(needle);
+// }
+// let needle = 'haystack';
+// test();
+//logs 'magnet'
 
+
+
+//3: GIVEN
+let brendan = 'super cool';
+function print() {
+    brendan = 'only okay';
+    console.log(brendan);
+}
+console.log(brendan);
+
+//After Hoisting by the Interpreter
+// function print() {
+//     brendan = 'only okay';
+//     console.log(brendan);
+// }
+// let brendan = 'super cool';
+// console.log(brendan);
+//logs 'super cool'
+
+
+//4: GIVEN
+let food = 'chicken';
+console.log(food);
+eat();
+function eat() {
+    food = 'half-chicken';
+    console.log(food);
+    let food = 'gone';
+}
+
+//After Hoisting by the Interpreter
+// function eat() {
+//     food = 'half-chicken';
+//     console.log(food);
+//     let food = 'gone';
+// }
+// let food = 'chicken';
+// console.log(food);         // logs 'chicken'
+// eat();                     // ReferenceError - cannot access 'food' before initialization
+
+
+
+//5: GIVEN
+mean();
+console.log(food);
+let mean = function () {
+    food = "chicken";
+    console.log(food);
+    let food = "fish";
+    console.log(food);
+}
+console.log(food);
+
+//After Hoisting by the Interpreter
+//error - mean is not defined
+
+
+//6: GIVEN
+console.log(genre);
+let genre = "disco";
+rewind();
+function rewind() {
+    genre = "rock";
+    console.log(genre);
+    let genre = "r&b";
+    console.log(genre);
+}
+console.log(genre);
+
+//After Hoisting by the Interpreter
+// function rewind() {
+//     genre = "rock";
+//     console.log(genre);
+//     let genre = "r&b";
+//     console.log(genre);
+// }
+// console.log(genre);
+// let genre = "disco";
+// rewind();
+// console.log(genre);
+//reference error - genre is not defined //This stops the runtime
+
+//7: GIVEN
+dojo = "san jose";
+console.log(dojo);
+learn();
+function learn() {
+    console.log(dojo);
+    dojo = "seattle";
+    console.log(dojo);
+    let dojo = "burbank";
+    console.log(dojo);
+}
+console.log(dojo);
+
+//After Hoisting by the Interpreter
+// function learn() {
+//     console.log(dojo);
+//     dojo = "seattle";
+//     console.log(dojo);
+//     let dojo = "burbank";
+//     console.log(dojo);
+// }
+// dojo = "san jose";
+// console.log(dojo);
+// learn();
+// console.log(dojo);
+
+//ReferenceError - cannot access 'dojo' before initialization
+
+
+//8: GIVEN
+console.log(makeDojo("Chicago", 65));
+console.log(makeDojo("Berkeley", 0));
+function makeDojo(name, students) {
+    let dojo = {};
+    dojo.name = name;
+    dojo.students = students;
+    if (dojo.students > 50) {
+        dojo.hiring = true;
+    }
+    else if (dojo.students <= 0) {
+        dojo = "closed for now";
+    }
+    return dojo;
+}
+
+//After Hoisting by the Interpreter
+// function makeDojo(name, students) {
+//     let dojo = {};
+//     dojo.name = name;
+//     dojo.students = students;
+//     if (dojo.students > 50) {
+//         dojo.hiring = true;
+//     }
+//     else if (dojo.students <= 0) {
+//         dojo = "closed for now";
+//     }
+//     return dojo;
+// }
+// console.log(makeDojo("Chicago", 65));
+// console.log(makeDojo("Berkeley", 0));
+//logs {name:"Chicago",students:65, hiring: true}
+//logs closed for now
