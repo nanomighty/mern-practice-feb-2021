@@ -6,19 +6,25 @@
 // ninja1.showStats();
 
 class Ninja {
-    constructor(name){
+    constructor(name, health, strength=3,speed=3){
         this.name = name;
         this.health = health;
-        this.speed = 3;
-        this.strength = 3;
+        this.speed = speed;
+        this.strength = strength;
     }
     sayName(){
         console.log(this.name);
+        return this;
     }
     showStats(){
-        console.log(this.name,this.strength,this.speed,this.health)
+        console.log("Strength: " + this.strength,"Speed: " + this.speed, "Health: " + this.health);
+        return this;
     }
     drinkSake(){
         this.health += 10;
+        return this;
     }
 }
+
+const nancy = new Ninja ("Nancy");
+nancy.showStats();
