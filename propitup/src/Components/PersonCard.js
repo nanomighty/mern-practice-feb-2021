@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 
 class PersonCard extends React.Component {
 
+    constructor(props){
+        super(props);
+    }
+
     render(){
         const { lastName, firstName, age, hairColor } = this.props;
         return(
