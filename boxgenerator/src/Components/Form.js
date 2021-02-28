@@ -24,9 +24,9 @@ const Form = (props) => {
             <button onClick={ handleAdd }>Add</button>
             <div>
                 {
-                    box.colors.map((color) => (
-                    <div className='generatedBox' style={{ backgroundColor: color}}> </div>
-                    ))
+                    box.colors.map((color) => {
+                    return <div className='generatedBox' style={{ backgroundColor: color}}> </div>
+                    })
                 }
             </div>
         </div>
