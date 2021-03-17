@@ -2,7 +2,7 @@ const faker = require("faker");
 
 class Company {
     constructor() {
-        faker.locale = "id_ID";
+        this._id = faker.random.uuid();
         this.name = faker.company.companyName();
         this.addressStreet = faker.address.streetAddress();
         this.addressCity = faker.address.city();

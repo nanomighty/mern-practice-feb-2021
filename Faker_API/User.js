@@ -2,7 +2,7 @@ const faker = require("faker");
 
 class User {
     constructor() {
-        faker.locale = "id_ID";
+        this._id = faker.random.uuid();
         this.firstName = faker.name.firstName();
         this.lastName = faker.name.lastName();
         this.phoneNumber = faker.phone.phoneNumberFormat();
