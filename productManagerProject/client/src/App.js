@@ -10,8 +10,8 @@ function App() {
         <h1>Product Manager</h1>
         <br />
         <Router>
-          <Main path = "/products/" />
-          <Detail path = "/products/:id" />
+          <Main path = "/" />
+          <Detail path = "/:id" />
         </Router>
     </div>
   );
