@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Main from "./components/Main";
 import Detail from './components/Detail';
+import Update from './components/Update';
 import {Router} from '@reach/router';
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
         <br />
         <Router>
           <Main path = "/" />
-          <Detail path = "/:id" />
+          <Detail path = "/:_id" />
+          <Update path = "/:_id/edit" />
         </Router>
     </div>
   );
